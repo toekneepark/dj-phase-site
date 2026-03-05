@@ -1,0 +1,108 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact">
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-primary/5 via-dark to-dark"></div>
+    <div class="relative mx-auto max-w-6xl px-6 py-24">
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary-light">Get in Touch</p>
+      <h1 class="mt-2 text-4xl font-black sm:text-5xl">Book <span class="gradient-text">DJ Phase</span></h1>
+      <p class="mt-4 text-lg text-light/50">Ready to bring the energy? Let's talk about your event.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="border-t border-dark-border">
+    <div class="mx-auto max-w-6xl px-6 py-16">
+      <div class="grid gap-16 md:grid-cols-2">
+        <!-- Contact Form -->
+        <div>
+          <h2 class="text-2xl font-bold mb-6">Send a Message</h2>
+          <form class="space-y-6">
+            <div>
+              <label for="name" class="block text-sm font-medium text-light/70 mb-2">Name</label>
+              <input type="text" id="name" name="name" 
+                class="w-full rounded-lg border border-dark-border bg-dark-card px-4 py-3 text-light placeholder-light/30 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                placeholder="Your name" />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-light/70 mb-2">Email</label>
+              <input type="email" id="email" name="email"
+                class="w-full rounded-lg border border-dark-border bg-dark-card px-4 py-3 text-light placeholder-light/30 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                placeholder="your@email.com" />
+            </div>
+            <div>
+              <label for="event-type" class="block text-sm font-medium text-light/70 mb-2">Event Type</label>
+              <select id="event-type" name="event-type"
+                class="w-full rounded-lg border border-dark-border bg-dark-card px-4 py-3 text-light focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors">
+                <option value="" class="bg-dark-card">Select event type</option>
+                <option value="wedding" class="bg-dark-card">Wedding</option>
+                <option value="corporate" class="bg-dark-card">Corporate Event</option>
+                <option value="private" class="bg-dark-card">Private Party</option>
+                <option value="club" class="bg-dark-card">Club / Venue</option>
+                <option value="festival" class="bg-dark-card">Festival</option>
+                <option value="other" class="bg-dark-card">Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="date" class="block text-sm font-medium text-light/70 mb-2">Event Date</label>
+              <input type="date" id="date" name="date"
+                class="w-full rounded-lg border border-dark-border bg-dark-card px-4 py-3 text-light focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors" />
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium text-light/70 mb-2">Message</label>
+              <textarea id="message" name="message" rows="4"
+                class="w-full rounded-lg border border-dark-border bg-dark-card px-4 py-3 text-light placeholder-light/30 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors resize-none"
+                placeholder="Tell me about your event..."></textarea>
+            </div>
+            <button type="submit"
+              class="w-full rounded-lg bg-primary px-8 py-3 text-sm font-semibold text-white hover:bg-primary-light transition-all glow-purple">
+              Send Message
+            </button>
+          </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div>
+          <h2 class="text-2xl font-bold mb-6">Other Ways to Connect</h2>
+          <div class="space-y-6">
+            <div class="rounded-xl border border-dark-border bg-dark-card p-6">
+              <h3 class="font-bold text-primary-light">📧 Email</h3>
+              <p class="mt-2 text-light/50">booking@djphase.com</p>
+              <p class="mt-1 text-xs text-light/30">Best for booking inquiries</p>
+            </div>
+            <div class="rounded-xl border border-dark-border bg-dark-card p-6">
+              <h3 class="font-bold text-primary-light">📱 Social Media</h3>
+              <div class="mt-3 space-y-2">
+                <a href="#" class="flex items-center gap-3 text-light/50 hover:text-white transition-colors">
+                  <span>Instagram</span>
+                  <span class="text-light/30">@djphase</span>
+                </a>
+                <a href="#" class="flex items-center gap-3 text-light/50 hover:text-white transition-colors">
+                  <span>Twitter / X</span>
+                  <span class="text-light/30">@djphase</span>
+                </a>
+                <a href="#" class="flex items-center gap-3 text-light/50 hover:text-white transition-colors">
+                  <span>SoundCloud</span>
+                  <span class="text-light/30">djphase</span>
+                </a>
+              </div>
+            </div>
+            <div class="rounded-xl border border-dark-border bg-dark-card p-6">
+              <h3 class="font-bold text-primary-light">📍 Based In</h3>
+              <p class="mt-2 text-light/50">Seattle, Washington</p>
+              <p class="mt-1 text-xs text-light/30">Available for travel bookings</p>
+            </div>
+            <div class="rounded-xl border border-dark-border bg-dark-card p-6">
+              <h3 class="font-bold text-primary-light">🎙️ iHeartRadio</h3>
+              <p class="mt-2 text-light/50">Catch DJ Phase on air weekdays</p>
+              <a href="#" class="mt-2 inline-block text-sm text-primary-light hover:text-white transition-colors">Listen live →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

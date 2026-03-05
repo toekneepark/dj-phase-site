@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Gigs">
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-primary/5 via-dark to-dark"></div>
+    <div class="relative mx-auto max-w-6xl px-6 py-24">
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary-light">Live Shows</p>
+      <h1 class="mt-2 text-4xl font-black sm:text-5xl">Upcoming <span class="gradient-text">Gigs</span></h1>
+      <p class="mt-4 text-lg text-light/50">Catch DJ Phase live at these upcoming events.</p>
+    </div>
+  </section>
+
+  <!-- Gigs List -->
+  <section class="border-t border-dark-border">
+    <div class="mx-auto max-w-4xl px-6 py-16">
+      <div class="space-y-4">
+        <!-- Gig entries -->
+        <div class="group flex flex-col sm:flex-row items-start sm:items-center gap-6 rounded-xl border border-dark-border bg-dark-card p-6 hover:border-primary/30 transition-all">
+          <div class="flex-shrink-0 w-20 text-center">
+            <p class="text-3xl font-black text-primary-light">15</p>
+            <p class="text-sm font-semibold text-light/40">MAR</p>
+            <p class="text-xs text-light/30">2026</p>
+          </div>
+          <div class="flex-grow">
+            <h3 class="text-xl font-bold group-hover:text-primary-light transition-colors">Neon Nights at The Showbox</h3>
+            <p class="mt-1 text-sm text-light/50">📍 The Showbox · Seattle, WA</p>
+            <p class="mt-1 text-sm text-light/40">🕙 10:00 PM - 2:00 AM</p>
+            <p class="mt-2 text-sm text-light/60">The biggest Saturday night party in Seattle. Multiple DJs, immersive visuals, and non-stop energy.</p>
+          </div>
+          <div class="flex flex-col items-end gap-2">
+            <span class="rounded-full bg-primary/10 px-4 py-1 text-xs font-semibold text-primary-light">Tickets Available</span>
+            <a href="#" class="text-xs text-primary-light hover:text-white transition-colors">Get Tickets →</a>
+          </div>
+        </div>
+
+        <div class="group flex flex-col sm:flex-row items-start sm:items-center gap-6 rounded-xl border border-dark-border bg-dark-card p-6 hover:border-primary/30 transition-all">
+          <div class="flex-shrink-0 w-20 text-center">
+            <p class="text-3xl font-black text-primary-light">22</p>
+            <p class="text-sm font-semibold text-light/40">MAR</p>
+            <p class="text-xs text-light/30">2026</p>
+          </div>
+          <div class="flex-grow">
+            <h3 class="text-xl font-bold group-hover:text-primary-light transition-colors">Private Corporate Event</h3>
+            <p class="mt-1 text-sm text-light/50">📍 Downtown Seattle</p>
+            <p class="mt-1 text-sm text-light/40">🕖 7:00 PM - 11:00 PM</p>
+            <p class="mt-2 text-sm text-light/60">An exclusive corporate gala with live entertainment.</p>
+          </div>
+          <div class="flex flex-col items-end gap-2">
+            <span class="rounded-full bg-light/5 px-4 py-1 text-xs font-semibold text-light/40">Private Event</span>
+          </div>
+        </div>
+
+        <div class="group flex flex-col sm:flex-row items-start sm:items-center gap-6 rounded-xl border border-dark-border bg-dark-card p-6 hover:border-primary/30 transition-all">
+          <div class="flex-shrink-0 w-20 text-center">
+            <p class="text-3xl font-black text-primary-light">05</p>
+            <p class="text-sm font-semibold text-light/40">APR</p>
+            <p class="text-xs text-light/30">2026</p>
+          </div>
+          <div class="flex-grow">
+            <h3 class="text-xl font-bold group-hover:text-primary-light transition-colors">Spring Bash at Neumos</h3>
+            <p class="mt-1 text-sm text-light/50">📍 Neumos · Seattle, WA</p>
+            <p class="mt-1 text-sm text-light/40">🕘 9:00 PM - 2:00 AM</p>
+            <p class="mt-2 text-sm text-light/60">Kicking off spring with a bang. Special guest appearances and surprise sets all night long.</p>
+          </div>
+          <div class="flex flex-col items-end gap-2">
+            <span class="rounded-full bg-primary/10 px-4 py-1 text-xs font-semibold text-primary-light">Tickets Available</span>
+            <a href="#" class="text-xs text-primary-light hover:text-white transition-colors">Get Tickets →</a>
+          </div>
+        </div>
+
+        <div class="group flex flex-col sm:flex-row items-start sm:items-center gap-6 rounded-xl border border-dark-border bg-dark-card p-6 hover:border-primary/30 transition-all">
+          <div class="flex-shrink-0 w-20 text-center">
+            <p class="text-3xl font-black text-primary-light">19</p>
+            <p class="text-sm font-semibold text-light/40">APR</p>
+            <p class="text-xs text-light/30">2026</p>
+          </div>
+          <div class="flex-grow">
+            <h3 class="text-xl font-bold group-hover:text-primary-light transition-colors">Rooftop Sessions</h3>
+            <p class="mt-1 text-sm text-light/50">📍 Thompson Seattle Rooftop · Seattle, WA</p>
+            <p class="mt-1 text-sm text-light/40">🕗 8:00 PM - 12:00 AM</p>
+            <p class="mt-2 text-sm text-light/60">Sunset vibes with panoramic views of the Seattle skyline. Deep house and chill beats.</p>
+          </div>
+          <div class="flex flex-col items-end gap-2">
+            <span class="rounded-full bg-accent/10 px-4 py-1 text-xs font-semibold text-accent">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking CTA -->
+  <section class="border-t border-dark-border bg-dark-card">
+    <div class="mx-auto max-w-4xl px-6 py-16 text-center">
+      <h2 class="text-2xl font-black">Want DJ Phase at Your Event?</h2>
+      <p class="mt-2 text-light/50">Weddings, corporate events, private parties — let's make it happen.</p>
+      <a href="/contact" class="mt-6 inline-flex items-center rounded-full bg-primary px-8 py-3 text-sm font-semibold text-white hover:bg-primary-light transition-all glow-purple">
+        Book Now
+      </a>
+    </div>
+  </section>
+</Layout>

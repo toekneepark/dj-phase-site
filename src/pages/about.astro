@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About">
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-primary/5 via-dark to-dark"></div>
+    <div class="relative mx-auto max-w-6xl px-6 py-24">
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary-light">The Story</p>
+      <h1 class="mt-2 text-4xl font-black sm:text-5xl">About <span class="gradient-text">DJ Phase</span></h1>
+    </div>
+  </section>
+
+  <!-- Bio Section -->
+  <section class="border-t border-dark-border">
+    <div class="mx-auto max-w-6xl px-6 py-24">
+      <div class="grid gap-16 md:grid-cols-2">
+        <!-- Photo placeholder -->
+        <div class="flex items-center justify-center rounded-2xl border border-dark-border bg-dark-card aspect-square">
+          <div class="text-center text-light/30">
+            <div class="text-6xl mb-4">🎧</div>
+            <p class="text-sm">Photo coming soon</p>
+          </div>
+        </div>
+
+        <!-- Bio text -->
+        <div class="flex flex-col justify-center">
+          <h2 class="text-2xl font-bold">The Man Behind the Decks</h2>
+          <div class="mt-6 space-y-4 text-light/60 leading-relaxed">
+            <p>
+              DJ Phase has been a staple of Seattle's music scene for years, bringing an infectious energy 
+              to every set. As a personality on iHeartRadio, he connects with listeners across the 
+              Pacific Northwest daily.
+            </p>
+            <p>
+              But it's on the weekends where the magic really happens. From packed nightclubs to elegant 
+              corporate events, DJ Phase reads the room like no one else — seamlessly blending genres 
+              and decades to keep the dance floor moving.
+            </p>
+            <p>
+              Whether it's hip-hop, house, throwbacks, or the latest hits, DJ Phase curates every set 
+              with one goal in mind: making sure everyone in the room feels the music.
+            </p>
+          </div>
+
+          <div class="mt-8 grid grid-cols-3 gap-4">
+            <div class="rounded-xl border border-dark-border bg-dark-card p-4 text-center">
+              <p class="text-2xl font-black text-primary-light">10+</p>
+              <p class="mt-1 text-xs text-light/40">Years DJing</p>
+            </div>
+            <div class="rounded-xl border border-dark-border bg-dark-card p-4 text-center">
+              <p class="text-2xl font-black text-primary-light">500+</p>
+              <p class="mt-1 text-xs text-light/40">Events</p>
+            </div>
+            <div class="rounded-xl border border-dark-border bg-dark-card p-4 text-center">
+              <p class="text-2xl font-black text-primary-light">🎙️</p>
+              <p class="mt-1 text-xs text-light/40">iHeartRadio</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

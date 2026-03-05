@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Media">
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-primary/5 via-dark to-dark"></div>
+    <div class="relative mx-auto max-w-6xl px-6 py-24">
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary-light">Gallery</p>
+      <h1 class="mt-2 text-4xl font-black sm:text-5xl">Photos & <span class="gradient-text">Videos</span></h1>
+      <p class="mt-4 text-lg text-light/50">Highlights from the decks, the stage, and behind the scenes.</p>
+    </div>
+  </section>
+
+  <!-- Video Section -->
+  <section class="border-t border-dark-border">
+    <div class="mx-auto max-w-6xl px-6 py-16">
+      <h2 class="text-2xl font-bold mb-8">Videos</h2>
+      <div class="grid gap-6 md:grid-cols-2">
+        <!-- Video placeholder 1 -->
+        <div class="aspect-video rounded-xl border border-dark-border bg-dark-card flex items-center justify-center">
+          <div class="text-center text-light/30">
+            <div class="text-4xl mb-2">🎬</div>
+            <p class="text-sm">Video coming soon</p>
+          </div>
+        </div>
+        <!-- Video placeholder 2 -->
+        <div class="aspect-video rounded-xl border border-dark-border bg-dark-card flex items-center justify-center">
+          <div class="text-center text-light/30">
+            <div class="text-4xl mb-2">🎬</div>
+            <p class="text-sm">Video coming soon</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Gallery -->
+  <section class="border-t border-dark-border bg-dark-card">
+    <div class="mx-auto max-w-6xl px-6 py-16">
+      <h2 class="text-2xl font-bold mb-8">Photos</h2>
+      <div class="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <!-- Photo placeholders -->
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div class="aspect-square rounded-xl border border-dark-border bg-dark flex items-center justify-center hover:border-primary/30 transition-all cursor-pointer">
+            <div class="text-center text-light/20">
+              <div class="text-2xl mb-1">📸</div>
+              <p class="text-xs">Photo {i + 1}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
