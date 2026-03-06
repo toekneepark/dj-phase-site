@@ -1,14 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
 
 const photos = [
-  { src: '/images/crowd-blue.jpg', alt: 'DJ Phase performing - crowd with blue lights' },
-  { src: '/images/crowd-lucky-strike.jpg', alt: 'DJ Phase at Lucky Strike Lanes' },
-  { src: '/images/djphase-decks.jpg', alt: 'DJ Phase behind the decks' },
-  { src: '/images/headshot-1.jpg', alt: 'DJ Phase portrait' },
-  { src: '/images/headshot-2.jpg', alt: 'DJ Phase' },
-  { src: '/images/headshot-3.jpg', alt: 'DJ Phase - dramatic lighting' },
-  { src: '/images/headshot-4.jpg', alt: 'DJ Phase - close up' },
+  { src: `${base}images/crowd-blue.jpg`, alt: 'DJ Phase performing - crowd with blue lights' },
+  { src: `${base}images/crowd-lucky-strike.jpg`, alt: 'DJ Phase at Lucky Strike Lanes' },
+  { src: `${base}images/djphase-decks.jpg`, alt: 'DJ Phase behind the decks' },
+  { src: `${base}images/headshot-1.jpg`, alt: 'DJ Phase portrait' },
+  { src: `${base}images/headshot-2.jpg`, alt: 'DJ Phase' },
+  { src: `${base}images/headshot-3.jpg`, alt: 'DJ Phase - dramatic lighting' },
+  { src: `${base}images/headshot-4.jpg`, alt: 'DJ Phase - close up' },
 ];
 ---
 
