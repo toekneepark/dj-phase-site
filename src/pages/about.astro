@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="About">
@@ -18,43 +19,94 @@ import Layout from '../layouts/Layout.astro';
       <div class="grid gap-16 md:grid-cols-2">
         <!-- Photo -->
         <div class="flex items-center justify-center rounded-2xl overflow-hidden aspect-square">
-          <img src={`${import.meta.env.BASE_URL}images/headshot-2.jpg`} alt="DJ Phase" class="h-full w-full object-cover rounded-2xl" />
+          <img src={`${base}images/headshot-2.jpg`} alt="DJ Phase" class="h-full w-full object-cover rounded-2xl" />
         </div>
 
         <!-- Bio text -->
         <div class="flex flex-col justify-center">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary-light mb-2">Legendary</p>
           <h2 class="text-2xl font-bold">The Man Behind the Decks</h2>
           <div class="mt-6 space-y-4 text-light/60 leading-relaxed">
             <p>
-              DJ Phase has been a staple of Seattle's music scene for years, bringing an infectious energy 
-              to every set. As a personality on iHeartRadio, he connects with listeners across the 
-              Pacific Northwest daily.
+              DJ Phase isn't just a DJ — he's a full-spectrum music personality. By day, he's an on-air voice 
+              on iHeartRadio, connecting with listeners across the Pacific Northwest. By night (and 
+              weekends), he's behind the decks at Seattle's hottest venues, turning every room into a party.
             </p>
             <p>
-              But it's on the weekends where the magic really happens. From packed nightclubs to elegant 
-              corporate events, DJ Phase reads the room like no one else — seamlessly blending genres 
-              and decades to keep the dance floor moving.
+              From rocking the 300 Level concourse at Seahawks games in Lumen Field to holding down 
+              weekly residencies at Fuego Bar and Legion Sports Bar, DJ Phase has built a reputation 
+              as Seattle's most versatile DJ. His secret? He reads the room like nobody else — seamlessly 
+              blending house, R&B, top 40, remixes, and mashups to keep every crowd moving.
             </p>
             <p>
-              Whether it's hip-hop, house, throwbacks, or the latest hits, DJ Phase curates every set 
-              with one goal in mind: making sure everyone in the room feels the music.
+              He's also the creator of <a href="https://www.barbargerz.com" target="_blank" rel="noopener" class="text-primary-light hover:text-white transition-colors">Bar Bangerz</a> — 
+              a curated collection of custom DJ edits, remixes, and mashups used by DJs everywhere. 
+              When he's not on air or on stage, you'll find him creating vlogs, connecting with fans, 
+              and living music 24/7.
+            </p>
+            <p class="text-light/40 italic">
+              "I do stuff with audio." — DJ Phase
             </p>
           </div>
 
           <div class="mt-8 grid grid-cols-3 gap-4">
             <div class="rounded-xl border border-dark-border bg-dark-card p-4 text-center">
-              <p class="text-2xl font-black text-primary-light">10+</p>
-              <p class="mt-1 text-xs text-light/40">Years DJing</p>
-            </div>
-            <div class="rounded-xl border border-dark-border bg-dark-card p-4 text-center">
-              <p class="text-2xl font-black text-primary-light">500+</p>
-              <p class="mt-1 text-xs text-light/40">Events</p>
-            </div>
-            <div class="rounded-xl border border-dark-border bg-dark-card p-4 text-center">
               <p class="text-2xl font-black text-primary-light">🎙️</p>
               <p class="mt-1 text-xs text-light/40">iHeartRadio</p>
             </div>
+            <div class="rounded-xl border border-dark-border bg-dark-card p-4 text-center">
+              <p class="text-2xl font-black text-primary-light">🏈</p>
+              <p class="mt-1 text-xs text-light/40">Seahawks DJ</p>
+            </div>
+            <div class="rounded-xl border border-dark-border bg-dark-card p-4 text-center">
+              <p class="text-2xl font-black text-primary-light">🔥</p>
+              <p class="mt-1 text-xs text-light/40">Bar Bangerz</p>
+            </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Venues Section -->
+  <section class="border-t border-dark-border bg-dark-card">
+    <div class="mx-auto max-w-6xl px-6 py-24">
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary-light">Where You've Seen Me</p>
+      <h2 class="mt-2 text-3xl font-black">Notable Venues</h2>
+      <div class="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {[
+          'Lumen Field (Seahawks)',
+          'Fuego Bar & Lounge',
+          'Legion Sports Bar',
+          'Trinity Nightclub',
+          'The Octopus Bar',
+          "Ozzie's Seattle",
+          'Cowgirls Inc',
+          'Rhein House',
+          'Hotel Seattle',
+          'Lucky Strike Lanes',
+          'LeMay Car Museum',
+          'Q Nightclub',
+        ].map((venue) => (
+          <div class="rounded-xl border border-dark-border bg-dark p-4 text-center hover:border-primary/30 transition-all">
+            <p class="text-sm font-medium text-light/70">{venue}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Second Photo -->
+  <section class="border-t border-dark-border">
+    <div class="mx-auto max-w-6xl px-6 py-24">
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="relative overflow-hidden rounded-2xl aspect-video">
+          <img src={`${base}images/crowd-lucky-strike.jpg`} alt="DJ Phase at Lucky Strike" class="h-full w-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-dark/60 via-transparent to-transparent"></div>
+        </div>
+        <div class="relative overflow-hidden rounded-2xl aspect-video">
+          <img src={`${base}images/crowd-blue.jpg`} alt="DJ Phase crowd" class="h-full w-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-dark/60 via-transparent to-transparent"></div>
         </div>
       </div>
     </div>
