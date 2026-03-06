@@ -1,5 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const photos = [
+  { src: '/images/crowd-blue.jpg', alt: 'DJ Phase performing - crowd with blue lights' },
+  { src: '/images/crowd-lucky-strike.jpg', alt: 'DJ Phase at Lucky Strike Lanes' },
+  { src: '/images/djphase-decks.jpg', alt: 'DJ Phase behind the decks' },
+  { src: '/images/headshot-1.jpg', alt: 'DJ Phase portrait' },
+  { src: '/images/headshot-2.jpg', alt: 'DJ Phase' },
+  { src: '/images/headshot-3.jpg', alt: 'DJ Phase - dramatic lighting' },
+  { src: '/images/headshot-4.jpg', alt: 'DJ Phase - close up' },
+];
 ---
 
 <Layout title="Media">
@@ -41,13 +51,9 @@ import Layout from '../layouts/Layout.astro';
     <div class="mx-auto max-w-6xl px-6 py-16">
       <h2 class="text-2xl font-bold mb-8">Photos</h2>
       <div class="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        <!-- Photo placeholders -->
-        {Array.from({ length: 8 }).map((_, i) => (
-          <div class="aspect-square rounded-xl border border-dark-border bg-dark flex items-center justify-center hover:border-primary/30 transition-all cursor-pointer">
-            <div class="text-center text-light/20">
-              <div class="text-2xl mb-1">📸</div>
-              <p class="text-xs">Photo {i + 1}</p>
-            </div>
+        {photos.map((photo) => (
+          <div class="aspect-square rounded-xl overflow-hidden border border-dark-border hover:border-primary/30 transition-all cursor-pointer group">
+            <img src={photo.src} alt={photo.alt} class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300" />
           </div>
         ))}
       </div>

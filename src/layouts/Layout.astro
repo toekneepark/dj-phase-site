@@ -18,13 +18,16 @@ const { title, description = "DJ Phase — Seattle's premier DJ. iHeartRadio per
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/jpeg" href="/images/logo-black-bg.jpg" />
     <title>{title} | DJ Phase</title>
   </head>
   <body class="min-h-screen bg-dark font-sans text-light antialiased">
     <!-- Navigation -->
     <nav class="fixed top-0 z-50 w-full border-b border-dark-border bg-dark/80 backdrop-blur-xl">
       <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="/" class="text-2xl font-black tracking-tight gradient-text">DJ PHASE</a>
+        <a href="/" class="flex items-center gap-2">
+          <img src="/images/logo-white.jpg" alt="DJ Phase" class="h-8" />
+        </a>
         <div class="hidden md:flex items-center gap-8">
           <a href="/" class="text-sm font-medium text-light/70 hover:text-white transition-colors">Home</a>
           <a href="/about" class="text-sm font-medium text-light/70 hover:text-white transition-colors">About</a>
@@ -63,7 +66,7 @@ const { title, description = "DJ Phase — Seattle's premier DJ. iHeartRadio per
       <div class="mx-auto max-w-6xl px-6 py-12">
         <div class="flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <span class="text-xl font-black gradient-text">DJ PHASE</span>
+            <img src="/images/logo-white.jpg" alt="DJ Phase" class="h-6" />
             <p class="mt-2 text-sm text-light/50">Seattle's Premier DJ & iHeartRadio Personality</p>
           </div>
           <div class="flex items-center gap-6">
