@@ -96,7 +96,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="mx-auto max-w-4xl px-6 py-16 text-center">
       <h2 class="text-2xl font-black">Want DJ Phase at Your Event?</h2>
       <p class="mt-2 text-light/50">Weddings, corporate events, private parties — let's make it happen.</p>
-      <a href="/contact" class="mt-6 inline-flex items-center rounded-full bg-primary px-8 py-3 text-sm font-semibold text-white hover:bg-primary-light transition-all glow-purple">
+      <a href={`${import.meta.env.BASE_URL}contact`} class="mt-6 inline-flex items-center rounded-full bg-primary px-8 py-3 text-sm font-semibold text-white hover:bg-primary-light transition-all glow-purple">
         Book Now
       </a>
     </div>
