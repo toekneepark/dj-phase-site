@@ -260,6 +260,14 @@ const GigPreview = createClass({
   },
 });
 
+// Helper: resolve image paths (handles both /images/... and blob URLs from uploads)
+function resolveImg(src) {
+  if (!src) return null;
+  if (src.startsWith('blob:') || src.startsWith('http')) return src;
+  // Prepend base path for local images
+  return '/dj-phase-site' + (src.startsWith('/') ? src : '/' + src);
+}
+
 // --- Media Preview ---
 const MediaPreview = createClass({
   render: function () {
@@ -267,8 +275,8 @@ const MediaPreview = createClass({
     const title = entry.getIn(['data', 'title']) || 'Untitled';
     const type = entry.getIn(['data', 'type']) || 'Photo';
     const url = entry.getIn(['data', 'url']) || '';
-    const thumbnail = this.props.widgetsFor('thumbnail');
-    const thumbSrc = entry.getIn(['data', 'thumbnail']);
+    const thumbSrc = resolveImg(entry.getIn(['data', 'thumbnail']));
+    const date = entry.getIn(['data', 'date']);
 
     return h('div', { className: 'preview-container' },
       h('style', {}, siteStyles),
@@ -282,12 +290,24 @@ const MediaPreview = createClass({
             thumbSrc && h('img', { src: thumbSrc, style: { width: '64px', height: '64px', borderRadius: '8px', objectFit: 'cover' } }),
             h('div', { style: { flexGrow: 1 } },
               h('h2', { style: { marginTop: 0, fontSize: '18px' } }, title),
+              date && h('p', { style: { fontSize: '13px', color: 'rgba(226,232,240,0.4)', marginTop: '4px' } },
+                new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })),
             ),
             url && h('a', { className: 'listen-btn', href: url }, 'Listen'),
           )
+        ) : type === 'Video' ? (
+          h('div', { className: 'card' },
+            url ? h('div', { style: { aspectRatio: '16/9', marginBottom: '12px', borderRadius: '8px', overflow: 'hidden' } },
+              h('iframe', { src: url.replace('watch?v=', 'embed/'), style: { width: '100%', height: '100%', border: 'none' }, allowFullScreen: true })
+            ) : thumbSrc ? h('img', { src: thumbSrc, style: { width: '100%', borderRadius: '8px', marginBottom: '12px' } }) : null,
+            h('h2', { style: { marginTop: 0 } }, title),
+            this.props.widgetFor('body') && h('div', { className: 'body-text', style: { marginTop: '12px' } }, this.props.widgetFor('body')),
+          )
         ) : (
           h('div', {},
-            thumbSrc && h('img', { src: thumbSrc, style: { width: '100%', maxWidth: '400px', borderRadius: '12px', border: '1px solid #1e1e2e' } }),
+            thumbSrc && h('div', { style: { display: 'inline-block', borderRadius: '12px', overflow: 'hidden', border: '1px solid #1e1e2e' } },
+              h('img', { src: thumbSrc, style: { width: '100%', maxWidth: '400px', display: 'block' } }),
+            ),
             h('div', { className: 'card', style: { marginTop: '12px' } },
               h('h2', { style: { marginTop: 0 } }, title),
               h('span', { className: 'badge badge-purple' }, type),
@@ -306,7 +326,7 @@ const AboutPreview = createClass({
     const entry = this.props.entry;
     const name = entry.getIn(['data', 'title']) || 'DJ Phase';
     const tagline = entry.getIn(['data', 'tagline']) || '';
-    const photo = entry.getIn(['data', 'photo']);
+    const photo = resolveImg(entry.getIn(['data', 'photo']));
     const venues = entry.getIn(['data', 'venues']);
 
     return h('div', { className: 'preview-container' },
