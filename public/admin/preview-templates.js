@@ -426,39 +426,70 @@ var BlogPreview = createClass({
       // Posts
       h('div', { className: 'section' },
         h('div', { className: 'section-inner' },
-          // Current post (highlighted)
-          h('article', { className: 'card card-highlight' },
-            h('div', { className: 'meta' },
-              h('time', {}, date ? new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : 'No date'),
-              h('span', {}, '·'),
-              h('span', {}, readTime),
-              h('span', { className: catClass(category) }, category)
-            ),
-            h('h2', {}, title),
-            image && h('img', { src: image, style: { width: '100%', borderRadius: '8px', marginTop: '12px' } }),
-            h('div', { className: 'body-text' }, this.props.widgetFor('body')),
-            h('span', { className: 'read-more' }, 'Read more →')
-          ),
+          // All existing blog posts — current edit gets highlighted
+          (function() {
+            var existingPosts = [
+              { title: "Why Seattle's Music Scene is About to Explode", date: '2026-03-01', readTime: '5 min read', category: 'Music', excerpt: "Seattle has always been a music city. But something different is brewing..." },
+              { title: 'A Day in the Life: Radio to the Club', date: '2026-02-15', readTime: '3 min read', category: 'Behind the Scenes', excerpt: "People always ask what it's like to do radio during the week and DJ on weekends..." },
+              { title: 'My 2026 Setup: Gear That Makes the Magic Happen', date: '2026-01-28', readTime: '4 min read', category: 'Gear', excerpt: "Every DJ gets asked about their setup. Here's what I'm rocking this year..." },
+            ];
+            var currentTitle = title;
 
-          // Placeholder posts
-          h('article', { className: 'card', style: { opacity: 0.4 } },
-            h('div', { className: 'meta' },
-              h('time', {}, 'February 15, 2026'), h('span', {}, '·'), h('span', {}, '3 min read'),
-              h('span', { className: 'category cat-bts' }, 'Behind the Scenes')
-            ),
-            h('h2', {}, 'A Day in the Life: Radio to the Club'),
-            h('p', { className: 'body-text' }, "People always ask what it's like to do radio during the week and DJ on weekends..."),
-            h('span', { className: 'read-more' }, 'Read more →')
-          ),
-          h('article', { className: 'card', style: { opacity: 0.4 } },
-            h('div', { className: 'meta' },
-              h('time', {}, 'January 28, 2026'), h('span', {}, '·'), h('span', {}, '4 min read'),
-              h('span', { className: 'category cat-gear' }, 'Gear')
-            ),
-            h('h2', {}, 'My 2026 Setup: Gear That Makes the Magic Happen'),
-            h('p', { className: 'body-text' }, "Every DJ gets asked about their setup. Here's what I'm rocking this year..."),
-            h('span', { className: 'read-more' }, 'Read more →')
-          )
+            // Check if we're editing an existing post
+            var matchIdx = -1;
+            existingPosts.forEach(function(p, i) {
+              if (p.title === currentTitle) matchIdx = i;
+            });
+
+            var cards = [];
+
+            if (matchIdx === -1) {
+              // New post — show it first with highlight, then existing posts
+              cards.push(
+                h('article', { className: 'card', key: 'current', style: { border: '2px solid rgba(167,139,250,0.9)', boxShadow: '0 0 30px rgba(124,58,237,0.6), 0 0 60px rgba(124,58,237,0.3)' } },
+                  h('div', { className: 'meta' },
+                    h('time', {}, date ? new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : 'No date'),
+                    h('span', {}, '·'), h('span', {}, readTime),
+                    h('span', { className: catClass(category) }, category)
+                  ),
+                  h('h2', {}, currentTitle),
+                  image && h('img', { src: image, style: { width: '100%', borderRadius: '8px', marginTop: '12px' } }),
+                  h('div', { className: 'body-text' }, this.props.widgetFor('body')),
+                  h('span', { className: 'read-more' }, 'Read more →')
+                )
+              );
+            }
+
+            existingPosts.forEach(function(p, i) {
+              var isEditing = i === matchIdx;
+              cards.push(
+                h('article', {
+                  className: 'card',
+                  key: 'post-' + i,
+                  style: isEditing
+                    ? { border: '2px solid rgba(167,139,250,0.9)', boxShadow: '0 0 30px rgba(124,58,237,0.6), 0 0 60px rgba(124,58,237,0.3)' }
+                    : { opacity: 0.5 }
+                },
+                  h('div', { className: 'meta' },
+                    h('time', {}, isEditing && date
+                      ? new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+                      : new Date(p.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })),
+                    h('span', {}, '·'),
+                    h('span', {}, isEditing ? readTime : p.readTime),
+                    h('span', { className: catClass(isEditing ? category : p.category) }, isEditing ? category : p.category)
+                  ),
+                  h('h2', {}, isEditing ? currentTitle : p.title),
+                  isEditing && image && h('img', { src: image, style: { width: '100%', borderRadius: '8px', marginTop: '12px' } }),
+                  isEditing
+                    ? h('div', { className: 'body-text' }, this.props.widgetFor('body'))
+                    : h('p', { className: 'body-text' }, p.excerpt),
+                  h('span', { className: 'read-more' }, 'Read more →')
+                )
+              );
+            }.bind(this));
+
+            return cards;
+          }.bind(this))()
         )
       ),
 
