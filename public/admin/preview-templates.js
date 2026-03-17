@@ -429,9 +429,9 @@ var BlogPreview = createClass({
           // All existing blog posts — current edit gets highlighted
           (function() {
             var existingPosts = [
-              { title: "Why Seattle's Music Scene is About to Explode", date: '2026-03-01', readTime: '5 min read', category: 'Music', excerpt: "Seattle has always been a music city. But something different is brewing..." },
-              { title: 'A Day in the Life: Radio to the Club', date: '2026-02-15', readTime: '3 min read', category: 'Behind the Scenes', excerpt: "People always ask what it's like to do radio during the week and DJ on weekends..." },
               { title: 'My 2026 Setup: Gear That Makes the Magic Happen', date: '2026-01-28', readTime: '4 min read', category: 'Gear', excerpt: "Every DJ gets asked about their setup. Here's what I'm rocking this year..." },
+              { title: 'A Day in the Life: Radio to the Club', date: '2026-02-15', readTime: '3 min read', category: 'Behind the Scenes', excerpt: "People always ask what it's like to do radio during the week and DJ on weekends..." },
+              { title: "Why Seattle's Music Scene is About to Explode", date: '2026-03-01', readTime: '5 min read', category: 'Music', excerpt: "Seattle has always been a music city. But something different is brewing..." },
             ];
             var currentTitle = title;
 
