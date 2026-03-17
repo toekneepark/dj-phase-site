@@ -295,6 +295,58 @@ const siteStyles = `
     text-decoration: none;
     box-shadow: 0 0 20px rgba(124,58,237,0.3);
   }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .nav-links { gap: 12px; }
+    .nav-link { font-size: 11px; }
+    .nav-cta { padding: 6px 14px; font-size: 11px; }
+    .nav-logo { font-size: 16px; }
+    .nav-inner { padding: 12px 16px; }
+
+    .hero { padding: 32px 16px; }
+    .hero h1 { font-size: 26px; }
+    .hero .subtitle { font-size: 14px; }
+    .hero-label { font-size: 10px; }
+
+    .section-inner { padding: 32px 16px; }
+    .section-title { font-size: 18px; }
+
+    .card { padding: 16px; }
+    .card h2 { font-size: 18px; margin-top: 8px; }
+    .body-text { font-size: 14px; }
+    .meta { flex-wrap: wrap; gap: 4px; font-size: 11px; }
+
+    .gig-card { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .gig-date { width: auto; text-align: left; }
+    .gig-info h3 { font-size: 16px; }
+
+    .photo-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+
+    .profile-photo { max-width: 200px; }
+
+    .venue-grid { grid-template-columns: 1fr; }
+    .venue-chip { font-size: 12px; padding: 10px; }
+
+    .footer-inner { padding: 32px 16px; }
+    .footer-top { flex-direction: column; text-align: center; gap: 16px; }
+    .footer-tagline { font-size: 12px; }
+
+    .cta-section { padding: 32px 16px; }
+    .cta-section h2 { font-size: 18px; }
+    .cta-btn { padding: 10px 24px; font-size: 13px; }
+
+    .listen-btn { padding: 6px 16px; font-size: 12px; }
+  }
+
+  @media (max-width: 400px) {
+    .nav-links { gap: 8px; }
+    .nav-link { font-size: 10px; }
+    .nav-cta { display: none; }
+    .hero h1 { font-size: 22px; }
+    .card h2 { font-size: 16px; }
+    .photo-grid { grid-template-columns: repeat(2, 1fr); }
+  }
 `;
 
 // Helper: resolve image paths
