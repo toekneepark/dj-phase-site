@@ -36,3 +36,32 @@ collections:
       - { label: "Cover", name: "cover", widget: "string", required: false, default: "Free" }
       - { label: "Type", name: "type", widget: "select", options: ["Weekly Residency", "Special Event", "Private", "Festival", "Corporate"] }
       - { label: "Details", name: "body", widget: "markdown", required: false }
+
+  - name: "media"
+    label: "Media"
+    folder: "src/content/media"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Type", name: "type", widget: "select", options: ["Mix", "Video", "Photo"] }
+      - { label: "URL", name: "url", widget: "string", required: false, hint: "YouTube, SoundCloud, or other embed URL" }
+      - { label: "Thumbnail", name: "thumbnail", widget: "image", required: false }
+      - { label: "Description", name: "body", widget: "markdown", required: false }
+
+  - name: "about"
+    label: "About"
+    files:
+      - name: "bio"
+        label: "Bio / About Me"
+        file: "src/content/about/bio.md"
+        fields:
+          - { label: "Name", name: "title", widget: "string", default: "DJ Phase" }
+          - { label: "Tagline", name: "tagline", widget: "string", default: "I do stuff with audio." }
+          - { label: "Profile Photo", name: "photo", widget: "image", required: false }
+          - { label: "Bio", name: "body", widget: "markdown" }
+          - label: "Notable Venues"
+            name: "venues"
+            widget: "list"
+            field: { label: "Venue", name: "venue", widget: "string" }
