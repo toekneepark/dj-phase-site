@@ -9,21 +9,24 @@ media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 
 collections:
-  - name: "blog"
-    label: "Blog Posts"
-    folder: "src/content/blog"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime" }
-      - { label: "Read Time", name: "readTime", widget: "string", default: "3 min read" }
-      - { label: "Category", name: "category", widget: "select", options: ["Music", "Behind the Scenes", "Gear", "Life", "Events"] }
-      - { label: "Featured Image", name: "image", widget: "image", required: false }
-      - { label: "Body", name: "body", widget: "markdown" }
+  - name: "about"
+    label: "About"
+    files:
+      - name: "bio"
+        label: "Bio / About Me"
+        file: "src/content/about/bio.md"
+        fields:
+          - { label: "Name", name: "title", widget: "string", default: "DJ Phase" }
+          - { label: "Tagline", name: "tagline", widget: "string", default: "I do stuff with audio." }
+          - { label: "Profile Photo", name: "photo", widget: "image", required: false }
+          - { label: "Bio", name: "body", widget: "markdown" }
+          - label: "Notable Venues"
+            name: "venues"
+            widget: "list"
+            field: { label: "Venue", name: "venue", widget: "string" }
 
   - name: "gigs"
-    label: "Upcoming Gigs"
+    label: "Gigs"
     folder: "src/content/gigs"
     create: true
     slug: "{{slug}}"
@@ -50,18 +53,15 @@ collections:
       - { label: "Thumbnail", name: "thumbnail", widget: "image", required: false }
       - { label: "Description", name: "body", widget: "markdown", required: false }
 
-  - name: "about"
-    label: "About"
-    files:
-      - name: "bio"
-        label: "Bio / About Me"
-        file: "src/content/about/bio.md"
-        fields:
-          - { label: "Name", name: "title", widget: "string", default: "DJ Phase" }
-          - { label: "Tagline", name: "tagline", widget: "string", default: "I do stuff with audio." }
-          - { label: "Profile Photo", name: "photo", widget: "image", required: false }
-          - { label: "Bio", name: "body", widget: "markdown" }
-          - label: "Notable Venues"
-            name: "venues"
-            widget: "list"
-            field: { label: "Venue", name: "venue", widget: "string" }
+  - name: "blog"
+    label: "Blog"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Read Time", name: "readTime", widget: "string", default: "3 min read" }
+      - { label: "Category", name: "category", widget: "select", options: ["Music", "Behind the Scenes", "Gear", "Life", "Events"] }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
