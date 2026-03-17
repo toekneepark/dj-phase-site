@@ -589,7 +589,7 @@ var MediaPreview = createClass({
                     src: isCurrentEdit && currentThumb ? currentThumb : p.src,
                     alt: p.alt,
                     key: p.src,
-                    style: isCurrentEdit ? { border: '2px solid rgba(124,58,237,0.6)', boxShadow: '0 0 20px rgba(124,58,237,0.3)' } : {}
+                    style: isCurrentEdit ? { border: '3px solid rgba(167,139,250,0.9)', boxShadow: '0 0 30px rgba(124,58,237,0.6), 0 0 60px rgba(124,58,237,0.3)' } : {}
                   });
                 });
                 // If it's a brand new photo not matching existing ones, add it at the end
@@ -598,7 +598,7 @@ var MediaPreview = createClass({
                     src: currentThumb,
                     alt: title,
                     key: 'new',
-                    style: { border: '2px solid rgba(124,58,237,0.6)', boxShadow: '0 0 20px rgba(124,58,237,0.3)' }
+                    style: { border: '3px solid rgba(167,139,250,0.9)', boxShadow: '0 0 30px rgba(124,58,237,0.6), 0 0 60px rgba(124,58,237,0.3)' }
                   }));
                 }
                 return cells;
