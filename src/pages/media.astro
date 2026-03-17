@@ -1,16 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
 const base = import.meta.env.BASE_URL;
 
-const photos = [
-  { src: `${base}images/crowd-blue.jpg`, alt: 'DJ Phase performing - crowd with blue lights' },
-  { src: `${base}images/crowd-lucky-strike.jpg`, alt: 'DJ Phase at Lucky Strike Lanes' },
-  { src: `${base}images/djphase-decks.jpg`, alt: 'DJ Phase behind the decks' },
-  { src: `${base}images/headshot-1.jpg`, alt: 'DJ Phase portrait' },
-  { src: `${base}images/headshot-2.jpg`, alt: 'DJ Phase' },
-  { src: `${base}images/headshot-3.jpg`, alt: 'DJ Phase - dramatic lighting' },
-  { src: `${base}images/headshot-4.jpg`, alt: 'DJ Phase - close up' },
-];
+const allMedia = (await getCollection('media')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const videos = allMedia.filter((m) => m.data.type === 'Video');
+const mixes = allMedia.filter((m) => m.data.type === 'Mix');
+const photos = allMedia.filter((m) => m.data.type === 'Photo');
 ---
 
 <Layout title="Media">
@@ -24,40 +23,98 @@ const photos = [
     </div>
   </section>
 
-  <!-- Video Section -->
-  <section class="border-t border-dark-border">
-    <div class="mx-auto max-w-6xl px-6 py-16">
-      <h2 class="text-2xl font-bold mb-8">Videos</h2>
-      <div class="grid gap-6 md:grid-cols-2">
-        <!-- Video placeholder 1 -->
-        <div class="aspect-video rounded-xl border border-dark-border bg-dark-card flex items-center justify-center">
-          <div class="text-center text-light/30">
-            <div class="text-4xl mb-2">🎬</div>
-            <p class="text-sm">Video coming soon</p>
-          </div>
-        </div>
-        <!-- Video placeholder 2 -->
-        <div class="aspect-video rounded-xl border border-dark-border bg-dark-card flex items-center justify-center">
-          <div class="text-center text-light/30">
-            <div class="text-4xl mb-2">🎬</div>
-            <p class="text-sm">Video coming soon</p>
-          </div>
+  <!-- Videos Section -->
+  {videos.length > 0 && (
+    <section class="border-t border-dark-border">
+      <div class="mx-auto max-w-6xl px-6 py-16">
+        <h2 class="text-2xl font-bold mb-8">Videos</h2>
+        <div class="grid gap-6 md:grid-cols-2">
+          {videos.map((video) => (
+            <div class="rounded-xl border border-dark-border bg-dark-card overflow-hidden hover:border-primary/30 transition-all">
+              {video.data.url ? (
+                <div class="aspect-video">
+                  <iframe
+                    src={video.data.url.replace('watch?v=', 'embed/')}
+                    class="w-full h-full"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  />
+                </div>
+              ) : video.data.thumbnail ? (
+                <div class="aspect-video">
+                  <img src={`${base}${video.data.thumbnail.replace(/^\//, '')}`} alt={video.data.title} class="w-full h-full object-cover" />
+                </div>
+              ) : (
+                <div class="aspect-video flex items-center justify-center">
+                  <div class="text-center text-light/30">
+                    <div class="text-4xl mb-2">🎬</div>
+                    <p class="text-sm">Video coming soon</p>
+                  </div>
+                </div>
+              )}
+              <div class="p-4">
+                <h3 class="font-bold text-lg">{video.data.title}</h3>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  )}
+
+  <!-- Mixes Section -->
+  {mixes.length > 0 && (
+    <section class="border-t border-dark-border">
+      <div class="mx-auto max-w-6xl px-6 py-16">
+        <h2 class="text-2xl font-bold mb-8">Mixes</h2>
+        <div class="space-y-4">
+          {mixes.map((mix) => (
+            <div class="rounded-xl border border-dark-border bg-dark-card p-6 hover:border-primary/30 transition-all">
+              <div class="flex items-center gap-4">
+                {mix.data.thumbnail && (
+                  <img src={`${base}${mix.data.thumbnail.replace(/^\//, '')}`} alt={mix.data.title} class="w-16 h-16 rounded-lg object-cover" />
+                )}
+                <div class="flex-grow">
+                  <h3 class="font-bold text-lg">{mix.data.title}</h3>
+                  <p class="text-sm text-light/40">{new Date(mix.data.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                </div>
+                {mix.data.url && (
+                  <a href={mix.data.url} target="_blank" rel="noopener" class="rounded-full bg-primary px-5 py-2 text-sm font-semibold text-white hover:bg-primary-light transition-colors">
+                    Listen
+                  </a>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 
   <!-- Photo Gallery -->
-  <section class="border-t border-dark-border bg-dark-card">
-    <div class="mx-auto max-w-6xl px-6 py-16">
-      <h2 class="text-2xl font-bold mb-8">Photos</h2>
-      <div class="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {photos.map((photo) => (
-          <div class="aspect-square rounded-xl overflow-hidden border border-dark-border hover:border-primary/30 transition-all cursor-pointer group">
-            <img src={photo.src} alt={photo.alt} class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300" />
-          </div>
-        ))}
+  {photos.length > 0 && (
+    <section class="border-t border-dark-border bg-dark-card">
+      <div class="mx-auto max-w-6xl px-6 py-16">
+        <h2 class="text-2xl font-bold mb-8">Photos</h2>
+        <div class="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {photos.map((photo) => (
+            <div class="aspect-square rounded-xl overflow-hidden border border-dark-border hover:border-primary/30 transition-all cursor-pointer group">
+              <img src={`${base}${photo.data.thumbnail.replace(/^\//, '')}`} alt={photo.data.title} class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  )}
+
+  <!-- Empty state if no media at all -->
+  {allMedia.length === 0 && (
+    <section class="border-t border-dark-border">
+      <div class="mx-auto max-w-4xl px-6 py-24 text-center">
+        <p class="text-4xl mb-4">🎵</p>
+        <p class="text-light/50">Media coming soon — check back!</p>
+      </div>
+    </section>
+  )}
 </Layout>
