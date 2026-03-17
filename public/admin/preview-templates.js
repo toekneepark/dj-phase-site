@@ -567,13 +567,42 @@ var MediaPreview = createClass({
           h('div', { className: 'section-inner' },
             h('h2', { className: 'section-title' }, 'Photos'),
             h('div', { className: 'photo-grid' },
-              thumbSrc && h('img', { src: thumbSrc, style: { border: '2px solid rgba(124,58,237,0.5)', boxShadow: '0 0 20px rgba(124,58,237,0.2)' } }),
-              // Placeholder photos
-              h('div', { style: { aspectRatio: '1', borderRadius: '12px', background: '#1e1e2e', opacity: 0.3 } }),
-              h('div', { style: { aspectRatio: '1', borderRadius: '12px', background: '#1e1e2e', opacity: 0.3 } }),
-              h('div', { style: { aspectRatio: '1', borderRadius: '12px', background: '#1e1e2e', opacity: 0.3 } }),
-              h('div', { style: { aspectRatio: '1', borderRadius: '12px', background: '#1e1e2e', opacity: 0.3 } }),
-              h('div', { style: { aspectRatio: '1', borderRadius: '12px', background: '#1e1e2e', opacity: 0.3 } })
+              // All existing photos — the current one gets highlighted
+              (function() {
+                var base = '/dj-phase-site/images/';
+                var existingPhotos = [
+                  { src: base + 'crowd-blue.jpg', alt: 'DJ Phase performing - crowd with blue lights' },
+                  { src: base + 'crowd-lucky-strike.jpg', alt: 'DJ Phase at Lucky Strike Lanes' },
+                  { src: base + 'djphase-decks.jpg', alt: 'DJ Phase behind the decks' },
+                  { src: base + 'headshot-1.jpg', alt: 'DJ Phase portrait' },
+                  { src: base + 'headshot-2.jpg', alt: 'DJ Phase' },
+                  { src: base + 'headshot-3.jpg', alt: 'DJ Phase - dramatic lighting' },
+                  { src: base + 'headshot-4.jpg', alt: 'DJ Phase - close up' },
+                ];
+                // Check if current thumbnail matches any existing photo
+                var currentThumb = thumbSrc;
+                var matched = false;
+                var cells = existingPhotos.map(function(p) {
+                  var isCurrentEdit = currentThumb && currentThumb.indexOf(p.src.split('/').pop()) !== -1;
+                  if (isCurrentEdit) matched = true;
+                  return h('img', {
+                    src: isCurrentEdit && currentThumb ? currentThumb : p.src,
+                    alt: p.alt,
+                    key: p.src,
+                    style: isCurrentEdit ? { border: '2px solid rgba(124,58,237,0.6)', boxShadow: '0 0 20px rgba(124,58,237,0.3)' } : {}
+                  });
+                });
+                // If it's a brand new photo not matching existing ones, add it at the end
+                if (!matched && currentThumb) {
+                  cells.push(h('img', {
+                    src: currentThumb,
+                    alt: title,
+                    key: 'new',
+                    style: { border: '2px solid rgba(124,58,237,0.6)', boxShadow: '0 0 20px rgba(124,58,237,0.3)' }
+                  }));
+                }
+                return cells;
+              })()
             ),
             h('div', { style: { marginTop: '16px' } },
               h('p', { style: { fontWeight: 700, fontSize: '16px' } }, title),
