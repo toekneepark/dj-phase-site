@@ -338,4 +338,5 @@ const AboutPreview = createClass({
 CMS.registerPreviewTemplate('blog', BlogPreview);
 CMS.registerPreviewTemplate('gigs', GigPreview);
 CMS.registerPreviewTemplate('media', MediaPreview);
-CMS.registerPreviewTemplate('about', AboutPreview);
+// For 'files' type collections, register by file name
+CMS.registerPreviewTemplate('bio', AboutPreview);
